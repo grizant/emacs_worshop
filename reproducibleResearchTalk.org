@@ -23,6 +23,7 @@
 
 * Tasks 							   :noexport:
 
+** TODO Clean up paths 
 ** DONE [#A] Finish main slides
 
 ** TODO [#B] Create references
