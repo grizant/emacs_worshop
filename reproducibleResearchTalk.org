@@ -1,0 +1,201 @@
+#+TITLE:     Reproducible Research through GNU Emacs Org-mode
+#+AUTHOR:    A. Grant Schissler
+#+EMAIL:     grantschissler@email.arizona.edu
+#+DATE:      2014-02-05 Wed 
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:http://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:   
+#+LINK_HOME: 
+#+XSLT:
+#+startup: beamer
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+latex_header: \mode<beamer>{\usetheme{Madrid}}
+
+
+* Tasks 							   :noexport:
+
+** DONE [#A] Finish main slides
+
+** TODO [#B] Create references
+
+** TODO [#C] Export HTML
+
+** DONE [#A] Use Spell Checker
+
+** DONE [#B] Update Org Mode to fix syntax issues
+
+** DONE [#B] Clean up formating/add highlighting on links
+* Rough Outline 						   :noexport:
+** Concepts
+
+*** Reproducible Research
+
+*** Literate Programming 
+
+*** Publishing
+
+** Tools
+
+*** EMACS
+
+**** Modes, benefits, drawbacks, ess, ergoemacs
+
+*** Org mode
+    -Babel
+*** Latex
+
+**** AUCtex, reftex
+
+** Publishing
+   Sharing your work as an integral part of your work
+*** back ends
+** To include but not sure how/where
+*** 12.2 Export back-ends
+
+An export back-end is a library that translates Org syntax into a foreign format. An export format is not available until the proper back-end has been loaded.
+
+By default, the following four back-ends are loaded: ascii, html, icalendar and latex. It is possible to add more (or remove some) by customizing org-export-backends.
+
+Built-in back-ends include:
+
+ascii (ASCII format)
+beamer (LaTeX Beamer format)
+html (HTML format)
+icalendar (iCalendar format)
+latex (LaTeX format)
+man (Man page format)
+md (Markdown format)
+odt (OpenDocument Text format)
+org (Org format)
+texinfo (Texinfo format)
+** References
+** Links 
+ -  [[http://www.jstatsoft.org/v46/i03/paper][OrgPaper]] A Computing Environment for Literate Programming and Reproducible Research
+ -  [[http://orgmode.org/worg/][worg]]  Tutorials highly recommended
+ -  [[http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html][OrgModeGTD]] Charles Cave Implementation of Getting Things Done in org-mode
+ -  [[http://www.youtube.com/watch?v%3D1-dUkyn_fZA][KitchinYouTube]] Reproducible Research video
+ -  [[http://www.gnu.org/software/emacs/][Emacs]] emacs site
+ -  [[http://www.emacswiki.org/emacs/][EmacsWiki]] wiki for emacs
+ -  [[http://www.latex-project.org/][LaTeX]] LaTeX site
+ -  [[http://comjnl.oxfordjournals.org/content/27/2/97.full.pdf%2Bhtml?sid%3D5be303b3-d4b1-467b-a022-673e2239c52b][LiterateProgramming]]  Knuth classic paper
+
+** Bibtex
+@article{Schulte:Davison:Dye:Dominik:2011:JSSOBK:v46i03,
+  author =	"Eric Schulte and Dan Davison and Thomas Dye and Carsten Dominik",
+  title =	"A Multi-Language Computing Environment for Literate Programming and Reproducible Research",
+  journal =	"Journal of Statistical Software",
+  volume =	"46",
+  number =	"3",
+  pages =	"1--24",
+  day =  	"25",
+  month =	"1",
+  year = 	"2012",
+  CODEN =	"JSSOBK",
+  ISSN = 	"1548-7660",
+  bibdate =	"2011-10-03",
+  URL =  	"http://www.jstatsoft.org/v46/i03",
+  accepted =	"2011-10-03",
+  acknowledgement = "",
+  keywords =	"",
+  submitted =	"2010-12-22",
+  }
+* org-mode configuration 					   :noexport:
+#+STARTUP: overview
+#+STARTUP: hidestars
+
+* Reproducible Research and Literate Programming
+** Necessity of Reproducible Research and Literate Programming
+
+- Research demands meticulous experimental design, data processing, data analysis and report preparation.
+- Ideally, the procedures can be constructed in a manner that promotes automation, repeatability and transparency.
+- The process should be fully integrated within one document with minimal tools required.
+- Other researchers should be able to reproduce your work and understand your thought processes.
+- Reproducible Research and Literate Programming conceptualize these principles.
+
+** Reproducible Research Schematic
+[[file:literateProgrammingChart.png]]
+
+** Available Tools
+[[file:compareToolsTable.png]]
+
+* GNU Emacs
+** Emacs Org-mode: A Solution to Reproducible Research
+ GNU Emacs together with Org-mode offers an appealing solution to the problem of reproducible research.
+
+
+** GNU Emacs
+- GNU Emacs is an extensible, customizable, open source text editor that is part of the GNU/Linux distribution.
+- Emacs is essentially a shell for an Emacs Lisp interpreter.  So virtually any application that requires text editing can be handled by Emacs.
+- Emacs offers very fast editing commands within a unified interface.
+- Emacs has an extremely large and active development community so advances are made every day.  Almost anything you want to do with Emacs is already implemented.
+- Emacs features *modes* that provide computing environments for a multitude of purposes.
+
+
+** Emacs Modes
+- Emacs has hundreds of modes for specialized functionality.
+- If you are new to Emacs, I strongly recommend installing Ergoemacs first before becoming accustomed to the keyboard commands.  You will be faster and your hands will thank you.
+| Package/Mode | Purpose               |
+|--------------+-----------------------|
+| Ergoemacs    | Better Keybinding     |
+| AUCTeX       | LaTeX environment     |
+| RefTeX       | Reference Manager     |
+| AutoComplete | TAB Completion        |
+| Dired+       | File Management       |
+| ESS          | Statistical Computing |
+| IDO          | Emacs Buffer Mgmt     |
+| TRAMP        | Remote computing      |
+| Org          | Organization, RR, LP  |
+
+* Org-mode
+
+** Org-mode
+#+BEGIN_QUOTE
+Emacs with Org-mode [...] was a game-changer in reproducible research for me. \\
+-John Kitchin, Carnegie Melon University 
+#+END_QUOTE
+- Org is a mode for keeping notes, maintaining TODO lists, and doing project planning with a fast and effective plain-text system.
+- Org uses simple markup to define its structure and can embed arbitrary markup from LaTeX, HTML, etc.
+- Any programming language can be supported with code execution and capturing of output.
+- Sophisticated Export dispatcher that allows rich backend export in ascii, Beamer (LaTeX Beamer format), HTML, iCalendar, LaTeX, etc.
+
+* Demonstration
+
+** Working with R Source Code
+
+#+NAME: ggplotExample   
+#+BEGIN_SRC R :results output graphics :file piecewiseLinear.png :width 1000 :height 300 :tangle yes :session :exports both
+   
+myPlot <- qplot(displ, hwy, data=mpg, color=factor(cyl))
+myPlot + stat_smooth(method=lm)
+  
+#+END_SRC
+
+#+RESULTS: ggplotExample
+[[file:piecewiseLinear.png]]
+
+- Here R source code is embedded in the Org doc.  The code and graphics are displayed using LaTeX (weaved).
+- The source code can be extracted to a pure R script (tangled).
+ 
+** Example Org Doc
+
+- This presentation was generated from an Org doc exported in LaTeX (using Beamer) and processed to a pdf.
+- Let's take a look under the hood... _[[file:reproducibleResearchTalk.org][ReproducibleResearch.org]]_
+
+* Theory/Reality of Automation
+
+** Theory/Reality of Automation from xkcd.com
+
+#+BEGIN_CENTER
+#+ATTR_LATEX: :width 0.6\textwidth :height 0.75\textheight
+[[file:automationCartoon.png]]
+#+END_CENTER
+
